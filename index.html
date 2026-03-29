@@ -385,6 +385,76 @@ body::after {
 
 .tip-box strong { color:var(--gold); }
 
+/* ─── CTA SECTION ─── */
+.cta-section {
+  text-align:center;
+  padding: 36px 24px 28px;
+  margin-bottom: 8px;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.cta-section::before {
+  content:'';
+  position:absolute;
+  top:0; left:50%; transform:translateX(-50%);
+  width:60px; height:2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.cta-tag {
+  font-family:'Bebas Neue', sans-serif;
+  letter-spacing:5px; font-size:10px;
+  color:var(--gold); opacity:.6;
+  margin-bottom:14px;
+}
+
+.cta-text {
+  font-size: clamp(18px, 4vw, 24px);
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.cta-gold {
+  color: var(--gold);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3em;
+}
+
+.cta-sub {
+  font-size: 14px;
+  color: var(--dim);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-action {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 1px solid rgba(201,168,76,.35);
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  background: rgba(201,168,76,.06);
+  line-height: 1.6;
+}
+
+.cta-keyword {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.15em;
+  color: var(--gold);
+  letter-spacing: 2px;
+  background: rgba(201,168,76,.12);
+  padding: 1px 8px;
+  border-radius: 4px;
+}
+
 /* footer */
 footer {
   text-align:center; padding:32px 24px 24px;
@@ -440,7 +510,6 @@ footer span { color:var(--gold); }
 <div class="bg-glow"></div>
 
 <div class="header">
-  <div class="header-tag">NUTRITION RECIPES · وصفات التغذية الرياضية</div>
   <h1>وصفات<br><span>Coach Anis</span></h1>
   <p>وصفات رياضية مختارة — بالماكرو الكامل وطريقة التحضير</p>
   <div style="font-family:'Bebas Neue';letter-spacing:3px;font-size:10px;color:var(--gold);opacity:.4;margin-top:8px;">SCIENCE · NUTRITION · RESULTS</div>
@@ -470,11 +539,18 @@ footer span { color:var(--gold); }
 </div>
 
 <div class="main">
-  <div class="count-label" id="countLabel">12 وصفة</div>
+  <div class="count-label" id="countLabel">9 وصفة</div>
   <div class="grid" id="grid"></div>
 </div>
 
 <footer>
+  <div class="cta-section">
+    <div class="cta-tag">READY FOR MORE?</div>
+    <p class="cta-text">أعجبك ما شفت؟ هذا <span class="cta-gold">10%</span> فقط مما أقدمه.</p>
+    <p class="cta-sub">في برنامجي الكامل: وصفات غير محدودة + تدريب مخصص + متابعة يومية.</p>
+    <div class="cta-action">أرسل كلمة <span class="cta-keyword">coaching</span> على إنستغرام وابدأ اليوم ↓</div>
+  </div>
+
   <div class="ig-section">
     <div class="ig-label">تابعني على إنستغرام · FOLLOW ON INSTAGRAM</div>
     <a class="ig-btn" href="https://www.instagram.com/coach__anis?igsh=am5jbXo5ZGJwb2F4" target="_blank" rel="noopener">
@@ -590,30 +666,6 @@ const recipes = [
 
   // ── CUT ──
   {
-    id:4, cat:'cut',
-    name:'سلطة التونة المشوية',
-    desc:'وجبة تنشيف متكاملة — بروتين عالي وسعرات منخفضة جداً',
-    kcal:320, protein:42, carbs:18, fat:8, time:'15 دقيقة',
-    ingredients:[
-      {name:'تونة طازجة أو معلبة بالماء', qty:'200g'},
-      {name:'خس روماني', qty:'100g'},
-      {name:'طماطم كرزية', qty:'80g'},
-      {name:'خيار', qty:'1 حبة'},
-      {name:'ليمون', qty:'1 حبة'},
-      {name:'زيت زيتون', qty:'5ml'},
-      {name:'ملح وفلفل', qty:'حسب الذوق'},
-    ],
-    steps:[
-      'صفّي التونة جيداً من الماء.',
-      'قطّع الخس والخيار والطماطم.',
-      'اخلط الخضروات في طبق.',
-      'ضع التونة فوق السلطة.',
-      'أضف عصير الليمون وزيت الزيتون والتوابل.',
-      'اخلط برفق وقدّم مباشرة.',
-    ],
-    tip:'لا تضف صوص جاهز — يحتوي على سعرات خفية. الليمون وزيت الزيتون كافيان ويعطيان نكهة رائعة.',
-  },
-  {
     id:5, cat:'cut',
     name:'دجاج مشوي مع الخضروات المشوية',
     desc:'وجبة تنشيف الملك — بروتين عالي، دهون قليلة، مشبعة لساعات',
@@ -665,29 +717,6 @@ const recipes = [
 
   // ── BULK ──
   {
-    id:7, cat:'bulk',
-    name:'رز بالدجاج وصوص الفول السوداني',
-    desc:'وجبة تضخيم كلاسيكية — سعرات عالية وتوازن ماكرو مثالي',
-    kcal:680, protein:52, carbs:72, fat:18, time:'25 دقيقة',
-    ingredients:[
-      {name:'رز أبيض مسلوق', qty:'150g (جاف)'},
-      {name:'صدر دجاج', qty:'200g'},
-      {name:'زبدة فول سوداني طبيعية', qty:'30g'},
-      {name:'صوص صويا', qty:'10ml'},
-      {name:'ثوم بودر', qty:'ملعقة صغيرة'},
-      {name:'بصل أخضر', qty:'للتزيين'},
-    ],
-    steps:[
-      'اسلق الرز حتى ينضج تماماً.',
-      'اشوِ صدر الدجاج أو اطهه بالبخار وقطّعه.',
-      'في وعاء صغير: اخلط زبدة الفول السوداني مع الصوص صويا وملعقة ماء دافئ.',
-      'ضع الرز في الطبق وفوقه الدجاج.',
-      'سكب صوص الفول السوداني فوقهما.',
-      'زيّن بالبصل الأخضر المقطع.',
-    ],
-    tip:'زبدة الفول السوداني الطبيعية (مكون واحد فقط: فول سوداني) تعطي دهون صحية وسعرات ذات جودة للتضخيم.',
-  },
-  {
     id:8, cat:'bulk',
     name:'مكرونة بالدجاج والكريمة خالية الدسم',
     desc:'وجبة تضخيم شهية — غنية بالكارب والبروتين لدعم الاسترداد بعد التمرين',
@@ -710,30 +739,6 @@ const recipes = [
     ],
     tip:'تناول هذه الوجبة خلال ساعة بعد التمرين — الكارب يجدد الجليكوجين والبروتين يبدأ بناء العضلات فوراً.',
   },
-  {
-    id:9, cat:'bulk',
-    name:'بطاطا حلوة بالتونة والأفوكادو',
-    desc:'مزيج مثالي من الكارب المعقد والبروتين والدهون الصحية',
-    kcal:580, protein:40, carbs:58, fat:18, time:'35 دقيقة',
-    ingredients:[
-      {name:'بطاطا حلوة كبيرة', qty:'200g'},
-      {name:'تونة بالماء', qty:'160g'},
-      {name:'أفوكادو', qty:'نصف حبة'},
-      {name:'طماطم كرزية', qty:'60g'},
-      {name:'ليمون', qty:'نصف حبة'},
-      {name:'ملح وكزبرة', qty:'حسب الذوق'},
-    ],
-    steps:[
-      'اغسل البطاطا الحلوة وضعها في الفرن 200 درجة لمدة 35-40 دقيقة.',
-      'صفّي التونة وافتتيها.',
-      'قطّع الأفوكادو لمكعبات والطماطم لأنصاف.',
-      'اخلط التونة مع الأفوكادو والطماطم وعصير الليمون.',
-      'افتح البطاطا من المنتصف.',
-      'ضع خليط التونة فوقها وقدّم.',
-    ],
-    tip:'البطاطا الحلوة أفضل من البطاطا العادية للرياضيين — GI أقل ومحتوى الألياف أعلى مع نكهة رائعة.',
-  },
-
   // ── SNACK ──
   {
     id:10, cat:'snack',
