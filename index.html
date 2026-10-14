@@ -464,6 +464,9 @@ body.light .modal-close {
 
 .cta-action {
   display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
   padding: 12px 28px;
   border: 1px solid rgba(201,168,76,.35);
   border-radius: 30px;
@@ -473,6 +476,8 @@ body.light .modal-close {
   background: rgba(201,168,76,.06);
   line-height: 1.6;
 }
+
+.cta-action:hover { background: rgba(201,168,76,.15); transform: translateY(-2px); }
 
 .cta-keyword {
   font-family: 'Bebas Neue', sans-serif;
@@ -963,6 +968,36 @@ body.light .sub-row {
   border-color: rgba(0,0,0,.06);
 }
 
+
+/* ─── Arabic title: connected Cairo letters, no letter-spacing ─── */
+html[dir="rtl"] .header h1 {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.35;
+  font-size: clamp(30px, 7vw, 54px);
+}
+html[dir="rtl"] .header-tag,
+html[dir="rtl"] .header p { letter-spacing: 0; }
+
+/* ─── Mobile: two recipes per row ─── */
+@media (max-width: 600px) {
+  .main { padding: 0 12px 48px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .rcard { border-radius: 12px; }
+  .rcard-top { padding: 14px 12px 0; }
+  .rcard-name { font-size: 14px; line-height: 1.35; }
+  .rcard-desc {
+    font-size: 11px; margin-bottom: 10px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .rcard-macros { flex-wrap: wrap; gap: 6px 4px; margin: 0 -12px; padding: 10px 12px; }
+  .rmacro { flex: 1 1 40%; }
+  .rmacro-val { font-size: 15px; }
+  .rmacro-lbl { font-size: 8px; letter-spacing: 0; }
+  .rcard-footer { padding: 8px 12px; font-size: 10px; flex-wrap: wrap; gap: 4px; }
+  .rcard-footer span[style] { font-size: 11px !important; }
+}
 </style>
 </head>
 <body>
@@ -993,17 +1028,9 @@ body.light .sub-row {
 <footer>
   <div class="cta-section">
     <p class="cta-text" data-i18n-html="ctaText">عجبك واش شفت ؟ هذا <span class="cta-gold">1%</span> فقط</p>
-    <div class="cta-action" data-i18n-html="ctaAction">ابعث كلمة <span class="cta-keyword">coaching</span> على إنستغرام وابدأ اليوم ↓</div>
+    <a class="cta-action" href="https://coach-anis.github.io/online-coaching/" target="_blank" rel="noopener" data-i18n-html="ctaAction">احصل على الـ <span class="cta-keyword">99%</span> المتبقية وابدأ التدريب الآن</a>
   </div>
 
-  <div class="ig-section">
-    <a class="ig-btn" href="https://ig.me/m/coach__anis" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-      </svg>
-      @Coach__anis
-    </a>
-  </div>
   <div data-i18n-html="footer">© 2026 <span>Coach Anis</span> · جميع الحقوق محفوظة</div>
   <div style="margin-top:5px;opacity:.3;font-family:'Bebas Neue';letter-spacing:3px;font-size:10px;">SCIENCE · NUTRITION · RESULTS</div>
 </footer>
@@ -1058,7 +1085,7 @@ const I18N = {
     ctaTag: "READY FOR MORE?",
     ctaText: 'عجبك واش شفت ؟ هذا <span class="cta-gold">1%</span> فقط',
     ctaSub: "في برنامجي الكامل: وصفات غير محدودة + تدريب مخصص + متابعة يومية.",
-    ctaAction: 'ابعث كلمة <span class="cta-keyword">coaching</span> على إنستغرام وابدأ اليوم ↓',
+    ctaAction: 'احصل على الـ <span class="cta-keyword">99%</span> المتبقية وابدأ التدريب الآن',
     igLabel: "تابعني على إنستغرام · FOLLOW ON INSTAGRAM",
     footer: '© 2026 <span>Coach Anis</span> · جميع الحقوق محفوظة',
     copyIngredients: "نسخ المكونات",
@@ -1105,7 +1132,7 @@ const I18N = {
     ctaTag: "ENVIE D'EN SAVOIR PLUS ?",
     ctaText: 'Vous aimez ? C\'est seulement <span class="cta-gold">1%</span> de ce que j\'offre.',
     ctaSub: "Dans mon programme complet : recettes illimitées + entraînement personnalisé + suivi quotidien.",
-    ctaAction: 'Envoyez le mot <span class="cta-keyword">coaching</span> sur Instagram et commencez aujourd\'hui ↓',
+    ctaAction: 'Obtenez les <span class="cta-keyword">99%</span> restants et commencez l\'entraînement maintenant',
     igLabel: "Suivez-moi sur Instagram · FOLLOW ON INSTAGRAM",
     footer: '© 2026 <span>Coach Anis</span> · Tous droits réservés',
     copyIngredients: "Copier les ingrédients",
@@ -1152,7 +1179,7 @@ const I18N = {
     ctaTag: "READY FOR MORE?",
     ctaText: 'Like what you see? This is only <span class="cta-gold">1%</span> of what I offer.',
     ctaSub: "In my full program: unlimited recipes + custom training + daily follow-up.",
-    ctaAction: 'Send the word <span class="cta-keyword">coaching</span> on Instagram and start today ↓',
+    ctaAction: 'Get the remaining <span class="cta-keyword">99%</span> and start training now',
     igLabel: "Follow me on Instagram · FOLLOW ON INSTAGRAM",
     footer: '© 2026 <span>Coach Anis</span> · All rights reserved',
     copyIngredients: "Copy ingredients",
@@ -1291,7 +1318,7 @@ const RECIPES = {
       id: 4, cat: 'snack',
       name: 'شيك البروتين الطبيعي بدون مسحوق',
       desc: 'شيك كثيف ومشبع — بروتين عالي بدون مسحوق مصنّع',
-      kcal: 290, protein: 31, carbs: 39, fat: 4, time: '5 دقائق',
+      kcal: 285, protein: 31, carbs: 36, fat: 4, time: '5 دقائق',
       ingredients: [
         { name: 'زبادي يوناني 0%', qty: '200g' },
         { name: 'حليب قليل الدسم', qty: '100ml' },
@@ -1317,12 +1344,12 @@ const RECIPES = {
       id: 5, cat: 'bulk',
       name: 'سموذي التضخيم',
       desc: 'سموذي عالي السعرات للضخامة — تمر، شوفان، زبدة فول، مكسرات وعسل',
-      kcal: 830, protein: 47, carbs: 115, fat: 25, time: '5 دقائق',
+      kcal: 890, protein: 49, carbs: 117, fat: 31, time: '5 دقائق',
       ingredients: [
         { name: 'حليب كامل الدسم', qty: '250ml' },
         { name: 'شوفان', qty: '40g' },
         { name: 'موز ناضج', qty: '1 حبة (~100g)' },
-        { name: 'تمر (مجدول منزوع النوى)', qty: '3 حبات (~45g)' },
+        { name: 'تمر (مجدول منزوع النوى)', qty: '2 حبات (~45g)' },
         { name: 'زبدة فول سوداني طبيعية', qty: '25g' },
         { name: 'مسحوق بروتين (فانيليا أو شوكولاتة)', qty: '30g' },
         { name: 'عسل', qty: '15g' },
@@ -1340,8 +1367,38 @@ const RECIPES = {
         { from: 'مسحوق بروتين 30g', to: 'زبادي يوناني كامل 150g  ·  أو حليب بودرة 40g  ·  أو بيضتين نيئتين مبسترتين' },
         { from: 'حليب كامل 250ml', to: 'حليب قليل الدسم + ملعقة زيت زيتون  ·  أو شراب لوز  ·  أو زبادي سائل' },
         { from: 'زبدة فول 25g', to: 'زبدة لوز/كاجو 25g  ·  أو طحينة 25g  ·  أو أفوكادو ¼ حبة' },
-        { from: 'تمر 3', to: 'عسل 25g  ·  أو دبس تمر 30g  ·  أو موز إضافي ½' },
+        { from: 'تمر 2', to: 'عسل 25g  ·  أو دبس تمر 30g  ·  أو موز إضافي ½' },
         { from: 'لوز 10g', to: 'كاجو أو فول سوداني 10g  ·  أو بذور شيا 8g  ·  أو بدون' },
+      ],
+    },
+    {
+      id: 6, cat: 'breakfast',
+      name: 'براوني الشوفان البارد',
+      desc: 'وجبة إفطار أو سناك غني بنكهة البراوني الشوكولاتة — يحضر مسبقاً بدون طهي صباحي',
+      kcal: 358, protein: 30, carbs: 44, fat: 8, time: '5 دقائق + نقع ليلي',
+      ingredients: [
+        { name: 'شوفان (عادي أو مطحون)', qty: '30g' },
+        { name: 'حليب بروتين (أو حليب عادي + 15g مسحوق بروتين)', qty: '200ml' },
+        { name: 'بياض بيض', qty: '100g (حوالي 3 حبات)' },
+        { name: 'موز ناضج مهروس', qty: '½ حبة (~50g)' },
+        { name: 'كاكاو خام (بودرة غير محلاة)', qty: '5g' },
+        { name: 'قرفة وملح', qty: 'رشة من كل منهما' },
+        { name: 'ماء (للطهي)', qty: '50ml' },
+        { name: 'فانيليا ومستخلص لوز ومحلي دايت', qty: 'حسب الرغبة' },
+      ],
+      steps: [
+        'في قدر على نار هادئة، أضف الشوفان والحليب والماء ورشة الملح، واتركه حتى يغلي ويصبح كثيفاً.',
+        'أضف بياض البيض واخفق فوراً وباستمرار لمدة 1–2 دقيقة حتى يصبح المزيج رغوياً وثقيلاً.',
+        'ارفع القدر عن النار وأضف الفانيليا ومستخلص اللوز والموز المهروس والمحلي.',
+        'اسكب الخليط في وعاء واتركه في الثلاجة طوال الليل.',
+        'في الصباح، أضف بودرة الكاكاو والقرفة وحرّك جيداً، وتناوله بارداً.',
+      ],
+      tip: 'إضافة مستخلص اللوز مع الفانيليا تصنع طعماً فخماً يشبه الكيك المحسّن، وتقليب بياض البيض على النار يمنحك قواماً كريمياً صافياً بدون طعم بيض.',
+      subs: [
+        { from: 'حليب بروتين 200ml', to: 'حليب عادي 200ml + مسحوق بروتين 15g  ·  أو حليب لوز غير محلى + مسحوق بروتين 20g' },
+        { from: 'شوفان 30g', to: 'شوفان مطحون 30g  ·  أو دقيق شوفان جاهز 30g' },
+        { from: 'بياض بيض 100g', to: 'بياض كرتون مبستر بنفس الكمية  ·  أو بيضة كاملة + بياض بيضة (دهون أعلى)' },
+        { from: 'موز ½', to: 'هريس تفاح بدون سكر 50g  ·  أو محلي ستيفيا (أقل سعرات)' },
       ],
     },
   ],
@@ -1432,7 +1489,7 @@ const RECIPES = {
       id: 4, cat: 'snack',
       name: 'Shake protéiné naturel (sans poudre)',
       desc: 'Shake dense sans poudre industrielle',
-      kcal: 290, protein: 31, carbs: 39, fat: 4, time: '5 min',
+      kcal: 285, protein: 31, carbs: 36, fat: 4, time: '5 min',
       ingredients: [
         { name: 'Yaourt grec 0%', qty: '200g' },
         { name: 'Lait écrémé / demi-écrémé', qty: '100ml' },
@@ -1456,12 +1513,12 @@ const RECIPES = {
       id: 5, cat: 'bulk',
       name: 'Smoothie prise de masse (dattes & noix)',
       desc: 'Smoothie hypercalorique — dattes, avoine, beurre de cacahuète, noix et miel',
-      kcal: 830, protein: 47, carbs: 115, fat: 25, time: '5 min',
+      kcal: 890, protein: 49, carbs: 117, fat: 31, time: '5 min',
       ingredients: [
         { name: 'Lait entier', qty: '250ml' },
         { name: 'Avoine', qty: '40g' },
         { name: 'Banane mûre', qty: '1 (~100g)' },
-        { name: 'Dattes (dénoyautées)', qty: '3 (~45g)' },
+        { name: 'Dattes (dénoyautées)', qty: '2 (~45g)' },
         { name: 'Beurre de cacahuète naturel', qty: '25g' },
         { name: 'Whey (vanille ou chocolat)', qty: '30g' },
         { name: 'Miel', qty: '15g' },
@@ -1478,8 +1535,38 @@ const RECIPES = {
         { from: 'Whey 30g', to: 'Yaourt grec entier 150g  ·  ou lait en poudre 40g' },
         { from: 'Lait entier 250ml', to: 'Lait écrémé + 1 c.à.s. huile d\'olive  ·  ou lait d\'amande' },
         { from: 'Beurre de cacahuète 25g', to: 'Beurre d\'amande 25g  ·  ou tahini  ·  ou ¼ avocat' },
-        { from: 'Dattes 3', to: 'Miel 25g  ·  ou sirop de dattes 30g  ·  ou ½ banane en plus' },
+        { from: 'Dattes 2', to: 'Miel 25g  ·  ou sirop de dattes 30g  ·  ou ½ banane en plus' },
         { from: 'Amandes 10g', to: 'Cajou ou cacahuètes 10g  ·  ou graines de chia 8g' },
+      ],
+    },
+    {
+      id: 6, cat: 'breakfast',
+      name: 'Overnight oats façon brownie',
+      desc: 'Petit-déj ou snack au goût brownie chocolat — préparé la veille, sans cuisson le matin',
+      kcal: 358, protein: 30, carbs: 44, fat: 8, time: '5 min + nuit au frais',
+      ingredients: [
+        { name: 'Avoine (classique ou moulue)', qty: '30g' },
+        { name: 'Lait protéiné (ou lait classique + 15g de whey)', qty: '200ml' },
+        { name: 'Blancs d\'œufs', qty: '100g (environ 3)' },
+        { name: 'Banane mûre écrasée', qty: '½ (~50g)' },
+        { name: 'Cacao cru (poudre non sucrée)', qty: '5g' },
+        { name: 'Cannelle et sel', qty: 'une pincée de chaque' },
+        { name: 'Eau (pour la cuisson)', qty: '50ml' },
+        { name: 'Vanille, extrait d\'amande et édulcorant', qty: 'selon l\'envie' },
+      ],
+      steps: [
+        'Dans une casserole à feu doux, ajoutez l\'avoine, le lait, l\'eau et une pincée de sel jusqu\'à ébullition et épaississement.',
+        'Ajoutez les blancs d\'œufs et fouettez sans arrêt 1–2 min jusqu\'à un mélange mousseux et épais.',
+        'Retirez du feu et ajoutez la vanille, l\'extrait d\'amande, la banane écrasée et l\'édulcorant.',
+        'Versez dans un récipient et laissez au réfrigérateur toute la nuit.',
+        'Le matin, ajoutez le cacao et la cannelle, mélangez bien et dégustez froid.',
+      ],
+      tip: 'L\'extrait d\'amande avec la vanille donne un goût de gâteau gourmand, et fouetter les blancs sur le feu offre une texture crémeuse sans goût d\'œuf.',
+      subs: [
+        { from: 'Lait protéiné 200ml', to: 'Lait classique 200ml + 15g de whey  ·  ou lait d\'amande non sucré + 20g de whey' },
+        { from: 'Avoine 30g', to: 'Avoine moulue 30g  ·  ou farine d\'avoine 30g' },
+        { from: 'Blancs d\'œufs 100g', to: 'Blancs pasteurisés en brique, même quantité  ·  ou 1 œuf entier + 1 blanc (plus de lipides)' },
+        { from: 'Banane ½', to: 'Compote sans sucre 50g  ·  ou stévia (moins de calories)' },
       ],
     },
   ],
@@ -1570,7 +1657,7 @@ const RECIPES = {
       id: 4, cat: 'snack',
       name: 'Natural Protein Shake (No Powder)',
       desc: 'Thick shake from kitchen ingredients — high protein, no manufactured powder',
-      kcal: 290, protein: 31, carbs: 39, fat: 4, time: '5 min',
+      kcal: 285, protein: 31, carbs: 36, fat: 4, time: '5 min',
       ingredients: [
         { name: '0% Greek yogurt', qty: '200g' },
         { name: 'Low-fat milk', qty: '100ml' },
@@ -1594,12 +1681,12 @@ const RECIPES = {
       id: 5, cat: 'bulk',
       name: 'Bulk Smoothie (Dates & Nuts)',
       desc: 'High-calorie mass-gain smoothie — dates, oats, peanut butter, nuts and honey',
-      kcal: 830, protein: 47, carbs: 115, fat: 25, time: '5 min',
+      kcal: 890, protein: 49, carbs: 117, fat: 31, time: '5 min',
       ingredients: [
         { name: 'Whole milk', qty: '250ml' },
         { name: 'Oats', qty: '40g' },
         { name: 'Ripe banana', qty: '1 (~100g)' },
-        { name: 'Dates (pitted)', qty: '3 (~45g)' },
+        { name: 'Dates (pitted)', qty: '2 (~45g)' },
         { name: 'Natural peanut butter', qty: '25g' },
         { name: 'Protein powder (vanilla or chocolate)', qty: '30g' },
         { name: 'Honey', qty: '15g' },
@@ -1616,8 +1703,38 @@ const RECIPES = {
         { from: 'Protein powder 30g', to: 'Full-fat Greek yogurt 150g  ·  or milk powder 40g' },
         { from: 'Whole milk 250ml', to: 'Low-fat milk + 1 tbsp olive oil  ·  or almond milk' },
         { from: 'Peanut butter 25g', to: 'Almond butter 25g  ·  or tahini  ·  or ¼ avocado' },
-        { from: 'Dates 3', to: 'Honey 25g  ·  or date syrup 30g  ·  or extra ½ banana' },
+        { from: 'Dates 2', to: 'Honey 25g  ·  or date syrup 30g  ·  or extra ½ banana' },
         { from: 'Almonds 10g', to: 'Cashews or peanuts 10g  ·  or chia seeds 8g' },
+      ],
+    },
+    {
+      id: 6, cat: 'breakfast',
+      name: 'Brownie Overnight Oats',
+      desc: 'Breakfast or snack with rich chocolate brownie flavor — prepped ahead, no cooking in the morning',
+      kcal: 358, protein: 30, carbs: 44, fat: 8, time: '5 min + overnight',
+      ingredients: [
+        { name: 'Oats (regular or ground)', qty: '30g' },
+        { name: 'Protein milk (or regular milk + 15g protein powder)', qty: '200ml' },
+        { name: 'Egg whites', qty: '100g (about 3)' },
+        { name: 'Ripe banana, mashed', qty: '½ (~50g)' },
+        { name: 'Raw cocoa (unsweetened powder)', qty: '5g' },
+        { name: 'Cinnamon and salt', qty: 'a pinch of each' },
+        { name: 'Water (for cooking)', qty: '50ml' },
+        { name: 'Vanilla, almond extract and diet sweetener', qty: 'to taste' },
+      ],
+      steps: [
+        'In a pot over low heat, add the oats, milk, water and a pinch of salt; bring to a boil until thick.',
+        'Add the egg whites and whisk constantly for 1–2 min until foamy and heavy.',
+        'Remove from heat and stir in the vanilla, almond extract, mashed banana and sweetener.',
+        'Pour into a container and refrigerate overnight.',
+        'In the morning, stir in the cocoa and cinnamon, mix well and eat cold.',
+      ],
+      tip: 'Almond extract with vanilla gives a rich, cake-like flavor, and whisking the egg whites over heat makes it creamy with no egg taste.',
+      subs: [
+        { from: 'Protein milk 200ml', to: 'Regular milk 200ml + 15g protein powder  ·  or unsweetened almond milk + 20g protein powder' },
+        { from: 'Oats 30g', to: 'Ground oats 30g  ·  or oat flour 30g' },
+        { from: 'Egg whites 100g', to: 'Pasteurized carton whites, same amount  ·  or 1 whole egg + 1 white (more fat)' },
+        { from: 'Banana ½', to: 'Unsweetened applesauce 50g  ·  or stevia (fewer calories)' },
       ],
     },
   ]
